@@ -14,23 +14,33 @@
     <h1> Mes Anniversaires </h1>
     
     <div id="list">
-        <div v-for="(friend, index) in friends" >
+        <div v-for="(friend, index) in friends" v-on:click="displayProfile(index)">
             <h3>{{ friend.name }}</h3>
             <span>{{ friend.birthdate }}</span> <br>
             {{ index }} <br>
             <img v-bind:src="friend.picture" alt="">
             <button v-on:click="removeFriend(index)"> sup bro </button>
-            
         </div>
 
-    <div class="addBirthday">
-        <h2> Ajouter un anniversaire </h2>
-        <form v-on:submit.prevent>
-            <input v-model="inputName" placeholder="Saisissez un nom"> <br>
-            <input v-model="inputBirthdate" type="date" placeholder="Saisissez une date de naissance"> <br>
-            <button v-on:click="addFriend"> Ajouter </button>
-        </form>
-    </div>
+        <div id="addBirthday" v-bind:class="{test : change}" >
+            <h2  v-on:click="change = !change"> {{addOption}} </h2>
+            <form v-on:submit.prevent>
+                <input v-model="inputName" placeholder="Saisissez un nom"> <br>
+                <input v-model="inputBirthdate" type="date" placeholder="Saisissez une date de naissance"> <br>
+                <button v-on:click="addFriend"> Ajouter </button>
+            </form>
+        </div>
+
+        <div v-on:click="closeProfile" v-for="element in profile"> 
+            <h2> Profile </h2>
+            <button> close </button>
+                {{ element.birthdate}} <br>
+                {{ element.name}} <br>
+                <img v-bind:src="element.picture" alt="">
+
+
+
+        </div>
 
 
     </div>
