@@ -7,37 +7,61 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <Link type="text/css" rel="StyleSheet" href="style.css"/>    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <h1> Mes Anniversaires </h1>
+    <h1> Mes <br>
+        Anniversaires </h1>
     
     <div id="list">
-        <div v-for="(friend, index) in friends" v-on:click="displayProfile(index)">
-            <h3>{{ friend.name }}</h3>
-            <span>{{ friend.birthdate }}</span> <br>
-            {{ index }} <br>
+        <input type="search" placeholder="Rechercher une personne...">
+        <div class="friendsList" v-for="(friend, index) in friends" v-on:click="displayProfile(index)">
             <img v-bind:src="friend.picture" alt="">
-            <button v-on:click="removeFriend(index)"> sup bro </button>
+
+                    <div class="flexCol">
+                        <h3>{{ friend.name }}</h3>
+                        <span>{{ friend.birthdate }}</span>
+                    </div>
+                    <span class="countdown"> Dans <br> ? 
+                        jours</span>
+              
+                <!-- <button v-on:click.stop="removeFriend(index)"> <i class="fas fa-trash-alt"></i> </button> -->
         </div>
 
-        <div id="addBirthday" v-bind:class="{test : change}" >
-            <h2  v-on:click="change = !change"> {{addOption}} </h2>
-            <form v-on:submit.prevent>
+<!-- FIELDS MODAL -->
+
+        <div id="addBirthday" v-bind:class="{test : displayBloc}" >
+            <h2  v-on:click="displayBloc = !displayBloc"> <i class="fas fa-trash-alt"></i> {{addOption}} </h2>
+            <form v-on:submit.prevent v-bind:class="{hide : !displayForm}" >
                 <input v-model="inputName" placeholder="Saisissez un nom"> <br>
                 <input v-model="inputBirthdate" type="date" placeholder="Saisissez une date de naissance"> <br>
+                <input v-model="inputPicture" placeholder="Entrez l'url d'une image"> <br>
                 <button v-on:click="addFriend"> Ajouter </button>
+            </form>
+
+            <form v-on:submit.prevent v-bind:class="{hide : displayForm}">
+                <input v-model="inputPresent" placeholder="Indiquez un cadeau"> <br>
+                <input v-model="inputYear" placeholder="Pour l'année..."> <br>
+                <button v-on:click="addPresent()"> Ajouter </button>
             </form>
         </div>
 
-        <div v-on:click="closeProfile" v-for="element in profile"> 
+<!-- PROFILE  -->
+        <div id="profile" v-for="element in profile" v-bind:class="{truc : hidden}"> 
             <h2> Profile </h2>
-            <button> close </button>
+            <button v-on:click="closeProfile"> close </button>
                 {{ element.birthdate}} <br>
                 {{ element.name}} <br>
-                <img v-bind:src="element.picture" alt="">
+                
 
+                 <br>
+                <img v-bind:src="element.picture" alt=""> <br>
+                <span> Cadeaux :</span>
+                <ul v-for="present in element.presents">
+                    <li > {{ present.year }} {{ present.gift }} </li>
+                </ul>
 
 
         </div>

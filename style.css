@@ -1,18 +1,127 @@
+@font-face {
+    font-family: 'Inter Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('font/Inter-Regular.woff') format('woff'), url('font/Inter-Regular.ttf') format('ttf');
+    }
+    
+@font-face {
+    font-family: 'Inter SemiBold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('font/Inter-SemiBold.woff') format('woff'), url('font/Inter-SemiBold.ttf') format('ttf');
+    }
+
+@font-face {
+    font-family: 'Inter Light';
+    font-style: normal;
+    font-weight: normal;
+    src: url('font/Inter-Light.woff') format('woff'), url('font/Inter-Light.woff') format('ttf');
+    }
+
 body {
-    margin-bottom: 200px;
+    font-family: Inter Light;
+    margin-bottom: 20%;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Inter SemiBold';
+}
+
+input[type=search] {
+    width: 100%;
+    border-radius: 24px;
+    font-size: 16px;
+    border: solid 1px rgb(204, 204, 204);
+    background-color: rgb(245, 240, 240);
+    padding: 12px;
 }
 
 #addBirthday {
+    width: 81vw;
+    height: 70%;
     color: white;
     position: fixed;
-    padding: 5px 15px 15px 15px;
-    width: 100%;
-    bottom: -100px;
+    padding: 5px 15px 15px 55px;
+    bottom: -65%;
     left: 0;
-    background-color: blue;
+    z-index: 5;
+    background-color: #42BDE3;
     transition: 0.2s ease-in;
+    border-radius: 15px;
 }
 
 .test {
     bottom: 0 !important;
 }
+
+.hide {
+    display: none;
+}
+
+#profile {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 3;
+    background-color: yellowgreen;
+    height: 100vh;
+    width: 100%;
+    transition: 0.2s ease-in;
+}
+
+.truc {
+    left: 0 !important;
+}
+
+.friendsList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(204, 204, 204) ;
+    
+}
+
+.friendsList h3 {
+    margin: 0;
+    color: #42BDE3;
+    font-family: 'Inter Regular' ;
+}
+
+.friendsList img {
+    width: 18vw;
+    height: 18vw;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* .flexRow {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: rgb(204, 204, 204) 2px solid;
+} */
+
+.flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.friendsList button {
+    background-color: transparent;
+    border: none;
+    border-radius: 12px;
+    font-size: 35px;
+    color: tomato;
+}
+
+.countdown {
+    font-size: 14px;
+    color: #BDBDBD;
+}
+
+
