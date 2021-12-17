@@ -29,7 +29,7 @@ h1 {
     font-family: 'Inter SemiBold';
 }
 
-input[type=search] {
+input {
     width: 100%;
     border-radius: 24px;
     font-size: 16px;
@@ -38,12 +38,17 @@ input[type=search] {
     padding: 12px;
 }
 
+input:focus {
+    outline: solid 2px rgb(4, 0, 255);
+
+}
+
 #addBirthday {
-    width: 81vw;
+    width: 96vw;
     height: 70%;
     color: white;
     position: fixed;
-    padding: 5px 15px 15px 55px;
+    padding: 15px;
     bottom: -65%;
     left: 0;
     z-index: 5;
@@ -65,7 +70,7 @@ input[type=search] {
     top: 0;
     left: 100%;
     z-index: 3;
-    background-color: yellowgreen;
+    background-color: white;
     height: 100vh;
     width: 100%;
     transition: 0.2s ease-in;
@@ -96,13 +101,8 @@ input[type=search] {
     height: 18vw;
     object-fit: cover;
     border-radius: 12px;
+    
 }
-
-/* .flexRow {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: rgb(204, 204, 204) 2px solid;
-} */
 
 .flexCol {
     display: flex;
@@ -111,17 +111,86 @@ input[type=search] {
 
 }
 
-.friendsList button {
-    background-color: transparent;
-    border: none;
-    border-radius: 12px;
-    font-size: 35px;
-    color: tomato;
-}
-
 .countdown {
     font-size: 14px;
     color: #BDBDBD;
+}
+
+.upperProfile {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: #42BDE3;
+    color: white;
+    font-size: 30px;
+    height: 250px;
+}
+
+.upperProfile h3 {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.upperProfile img {
+    width: 40vw;
+    height: 40vw;
+    border-radius: 50%;
+    border: white 4px solid;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0px 3px 10px rgba(71, 71, 71, 0.178);
+}
+
+#profile h2 {
+    font-family: Inter SemiBold;
+    margin: 0;
+
+}
+#profile ul {
+    padding: 0;
+    margin-top: 32px;
+    width: 100%;
+}
+
+.profileBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.upperProfile button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    margin: 15px;
+}
+
+.present {
+    font-family: 'Inter SemiBold';
+}
+
+.present::before {
+    content: "\2B24";
+    color: #42BDE3;
+    margin-right: 15px;
+}
+
+#profile li {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #bdbdbd6e;
+}
+
+.profileInfo {
+    text-align: center;
+    margin-top: 52px;
 }
 
 

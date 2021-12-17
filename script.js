@@ -2,7 +2,7 @@ let list = new Vue({
     el: '#list',
     data: {
         displayBloc : false,
-        displayForm: false,
+        displayForm: true,
         hidden: false,
         inputName: "",
         inputBirthdate: "",
@@ -63,10 +63,17 @@ let list = new Vue({
 
         },
 
-        removeFriend: function (index) {
+        removeFriend: function () {
+            idA = this.profile[0].id; 
 
-            console.log(index);
-            this.friends.splice(index, 1)
+            for (let i = 0; i < this.friends.length; i++ ) {
+                if (this.friends[i].id === idA) {
+                    console.log(this.friends[i].name) ; 
+                    this.friends.splice(i, 1)
+                }
+            }
+            this.closeProfile();
+
             this.saveLocal();
         },
 

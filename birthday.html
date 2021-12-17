@@ -27,8 +27,11 @@
                     <span class="countdown"> Dans <br> ? 
                         jours</span>
               
-                <!-- <button v-on:click.stop="removeFriend(index)"> <i class="fas fa-trash-alt"></i> </button> -->
+                
         </div>
+
+        <p v-if="!friends.length"> C'est vide par ici... <br>
+            Commencez par ajouter vos amis ainsi que leurs annversaires !  </p>
 
 <!-- FIELDS MODAL -->
 
@@ -50,18 +53,28 @@
 
 <!-- PROFILE  -->
         <div id="profile" v-for="element in profile" v-bind:class="{truc : hidden}"> 
-            <h2> Profile </h2>
-            <button v-on:click="closeProfile"> close </button>
-                {{ element.birthdate}} <br>
-                {{ element.name}} <br>
+            <div class="upperProfile">
                 
+                <div class="profileBar">
+                    <button v-on:click="closeProfile"> Retour </button>
+                    
+                    <button v-on:click="removeFriend()"> Supprimer </button>
+                </div>
+                <h3> Profile </h3>
 
-                 <br>
-                <img v-bind:src="element.picture" alt=""> <br>
-                <span> Cadeaux :</span>
-                <ul v-for="present in element.presents">
-                    <li > {{ present.year }} {{ present.gift }} </li>
+                <img v-bind:src="element.picture" alt="">
+            </div>
+                <div class="profileInfo">
+                    <h2> {{ element.name}} </h2>
+                    <span>{{ element.birthdate}} </span> <br>
+                </div>
+                
+                <ul >
+                    <li v-for="present in element.presents">  
+                        <span class="present">{{ present.gift }}</span> 
+                        <span>{{ present.year }}</span> </li>
                 </ul>
+
 
 
         </div>
