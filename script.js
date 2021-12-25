@@ -11,10 +11,10 @@ let list = new Vue({
         inputYear: "",
         addOption: "Ajouter un anniversaire",
         friends: [
-            { id: 123, name: 'Marceline', birthdate: '28/08/1988', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
-            { id: 3245, name: 'Jake', birthdate: '18/01/3097', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
-            { id: 6548, name: 'Bonnibel', birthdate: '18/04/2234', picture: 'https://c.tenor.com/E9ub-isJm3kAAAAM/princess-bubblegum-pasta.gif', presents: []},
-            { id: 9874, name: 'Wiz', birthdate: '12/01/3112', picture: 'https://i.makeagif.com/media/4-02-2016/t7M_9j.gif', presents: []},
+            { id: 123, name: 'Marceline', birthdate: '27/01/2012', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
+            { id: 3245, name: 'Jake', birthdate: '23/01/3112', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
+            { id: 6548, name: 'Bonnibel', birthdate: '2012-02-12', picture: 'https://c.tenor.com/E9ub-isJm3kAAAAM/princess-bubblegum-pasta.gif', presents: []},
+            { id: 9874, name: 'Wiz', birthdate: '2018/11/17', picture: 'profile.svg', presents: []},
         ],
         profile: [
         ]
@@ -24,16 +24,23 @@ let list = new Vue({
             try {
                 this.friends = JSON.parse(localStorage.getItem('friends'));
             } catch(err) {
-                localStorage.removeItem('cats');
+                localStorage.removeItem('friends');
             }
         }
+        document.getElementById("loader").style.opacity = "0";
+        setTimeout(start, 1000);
+        function start() {
+            document.getElementById("loader").style.display = "none";
+        }
+
+
     },
     methods: {
         addFriend: function () {
             this.friends.push({
                 id: Date.now(), 
                 name: this.inputName, 
-                birthdate: this.inputBirthdate, 
+                birthdate: this.inputBirthdate,
                 picture: this.inputPicture,
                 presents: [],
 
@@ -93,11 +100,35 @@ let list = new Vue({
             this.displayForm = true
 
         },
-        saveLocal() {
+        saveLocal: function () {
             const parsed = JSON.stringify(this.friends);
-            localStorage.setItem('friends', parsed)
+            localStorage.setItem('friends', parsed);
             
+        },
+        getAge: function (birthdate) {
+            let d = new Date();
+            var y = d.getFullYear();
+            var date = new Date(birthdate).getFullYear();
+            let yearsOld = y - date;
+            return yearsOld;
+        },
+
+        countdown: function (birthdate) {
+            let d = new Date();
+            var y = d.getFullYear();
+            var dateObj = new Date(birthdate);
+            var month = dateObj.getUTCMonth();
+            var day = dateObj.getUTCDate();
+            let cd = new Date(y, month, day)
+            if (d.getMonth()>month && d.getDate()>day)  {
+                cd.setFullYear(cd.getFullYear()+1); 
+            }
+            let unixDay =  86400000;
+            
+            return Math.ceil((cd.getTime()-d.getTime())/(unixDay));
+
         }
+
     }
 })
 
