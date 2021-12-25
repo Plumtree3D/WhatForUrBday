@@ -20,8 +20,8 @@
     </div>
     
     <div id="list">
-        <input v-on:change="search()" type="search" placeholder="Rechercher une personne...">
-        <div class="friendsList" v-for="(friend, index) in friends" v-on:click="displayProfile(index)">
+        <input v-model="search" type="search" placeholder="Rechercher une personne...">
+        <div class="friendsList" v-for="(friend, index) in result" v-on:click="displayProfile(index)">
             <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt="">
                     <div class="flexCol">
                         <h3>{{ friend.name }}</h3>
@@ -38,13 +38,16 @@
             Commencez par ajouter vos amis ainsi que leurs annversaires !  </p>
 
 <!-- FIELDS MODAL -->
-<h2  v-on:click="displayBloc = !displayBloc"> <i class="fas fa-trash-alt"></i> {{addOption}} </h2>
+<div v-on:click="displayBloc = !displayBloc" class="btn">
+    <span> <i class="far fa-calendar-plus"> <i class="fas fa-gift"></i> </i> {{addOption}} </span>
+</div>
+
 <div class="lightbox" v-bind:class="{LBDisp : displayBloc}"></div>
         <div id="addBirthday" v-bind:class="{test : displayBloc}" >
 
             
-                <div class="handle"></div>
-                <h2  v-on:click="displayBloc = !displayBloc"> {{addOption}} </h2>
+                <div v-on:click="displayBloc = !displayBloc" class="handle"></div>
+                <h2  > {{addOption}} </h2>
 
             
                 <form v-on:submit.prevent v-bind:class="{hide : !displayForm}" >
@@ -62,6 +65,7 @@
                     <input v-model="inputYear" placeholder="Pour l'année..."> <br>
                     <button v-on:click="addPresent()"> Add </button>
                 </form>
+                <span v-on:click="displayBloc = !displayBloc"> Close </span>
         </div>
 
 <!-- PROFILE  -->
@@ -75,8 +79,7 @@
                 </div>
                 <h3> Profile </h3>
 
-                <img v-if="element.picture" :src="element.picture" alt="">
-                <img v-else :src="element.picture" alt="">
+                <img :src="element.picture ? element.picture : 'profile.svg'"  alt="">
             </div>
                 <div class="profileInfo">
                     <h2> {{ element.name}} <b>{{ getAge(element.birthdate) }}</b> </h2> 

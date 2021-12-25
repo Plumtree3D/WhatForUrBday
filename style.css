@@ -23,16 +23,33 @@ html {
     background-color: rgb(251, 251, 251);
 }
 
+.btn {
+    background-color: #42BDE3;
+    color: white;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    font-size: 14px;
+}
+
 body {
     background-color: white;
     font-family: Inter Light;
-    margin-bottom: 20%;
     max-width: 440px;
     margin: auto;
+    margin-bottom: 15%;
     padding: 5px;
 }
 
 h1 {
+    margin-top: 15%;
     text-align: center;
     font-family: 'Inter SemiBold';
 }
@@ -44,17 +61,21 @@ input {
     border: solid 1px rgb(204, 204, 204);
     background-color: rgb(245, 240, 240);
     padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 10%;
+
 }
 
 button {
-    width: 100%;
+    width: 120%;
     border-radius: 24px;
     font-size: 16px;
     background-color: #42BDE3;
     padding: 12px;
     color: white;
     border: none;
-
+    margin-top: 25px;
+    margin-left: -10%;
 }
 
 input:focus {
@@ -67,17 +88,29 @@ input:focus {
     max-width: 440px;
     height: 70%;
     color: black;
+    font-family: 'Inter Regular';
     position: fixed;
     bottom: -100%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 5;  
+    z-index: 8;  
     transition: 0.2s ease-in;
     background-color: white;
     border-radius: 15px 15px 0 0;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+#addBirthday span {
+    color: #42BDE3;
+    margin-top: 15px;
+}
+
+#addBirthday input {
+    width: 110%;
+    margin-left: -10%;
+    margin-bottom: 0;
 }
 
 .handle {
@@ -99,7 +132,7 @@ input:focus {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 7;
     width: 100%;
     height: 100%;
 }
@@ -191,6 +224,7 @@ input:focus {
     height: 180px;
     border-radius: 50%;
     border: white 4px solid;
+    background-color: hotpink;
     object-fit: cover;
     margin: auto;
     box-shadow: 0px 3px 10px rgba(71, 71, 71, 0.178);
@@ -247,9 +281,9 @@ input:focus {
 
 #loader {
     position: absolute;
-    z-index: 5000;
+    z-index: 10;
     width: 100%;
-    height: 80vh;
+    height: 100%;
     background-color: rgb(255, 255, 255);
     transition: 2s;
 }
@@ -257,10 +291,10 @@ input:focus {
 .loading {
     position: absolute;
     top: 20%;
-    left: 30%;
+    left: calc(50% - 50px);
     width: 100px;
     height: 100px;
-     border: solid 0px transparent;   
+    border: solid 0px transparent;   
     border-top: 2px solid #42b5e3;
     border-radius: 50%;
     z-index: 500;

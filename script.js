@@ -9,7 +9,8 @@ let list = new Vue({
         inputPicture: "",
         inputPresent: "",
         inputYear: "",
-        addOption: "Ajouter un anniversaire",
+        search: null,
+        addOption: "Add a birthday",
         friends: [
             { id: 123, name: 'Marceline', birthdate: '27/01/2012', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
             { id: 3245, name: 'Jake', birthdate: '23/01/3112', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
@@ -33,6 +34,18 @@ let list = new Vue({
             document.getElementById("loader").style.display = "none";
         }
 
+
+    },
+    computed: {
+        result() {
+            if (this.search){
+                return this.friends.filter((friend)=>{
+                    return friend.name.toLowerCase().startsWith(this.search.toLowerCase())
+                })
+            } else {
+                return this.friends;
+            }
+        }
 
     },
     methods: {
@@ -85,7 +98,7 @@ let list = new Vue({
         },
 
         displayProfile: function (index) {
-            this.addOption = "Ajouter un cadeau"
+            this.addOption = "Add a present"
             console.log(this.friends[index].name)
             
             this.profile = []
@@ -94,7 +107,7 @@ let list = new Vue({
             this.hidden = !this.hidden
         },
         closeProfile: function () {
-            this.addOption = "Ajouter un anniversaire"
+            this.addOption = "Add a birthday"
             this.hidden = !this.hidden
             this.profile = []
             this.displayForm = true
