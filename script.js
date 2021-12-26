@@ -11,9 +11,10 @@ let list = new Vue({
         inputYear: "",
         search: null,
         addOption: "Add a birthday",
+        icon: "far fa-calendar-plus",
         friends: [
-            { id: 123, name: 'Marceline', birthdate: '27/01/2012', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
-            { id: 3245, name: 'Jake', birthdate: '23/01/3112', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
+            { id: 123, name: 'Marceline', birthdate: '2012-01-08', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
+            { id: 3245, name: 'Jake', birthdate: '2007-01-27', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
             { id: 6548, name: 'Bonnibel', birthdate: '2012-02-12', picture: 'https://c.tenor.com/E9ub-isJm3kAAAAM/princess-bubblegum-pasta.gif', presents: []},
             { id: 9874, name: 'Wiz', birthdate: '2018/11/17', picture: 'profile.svg', presents: []},
         ],
@@ -58,6 +59,7 @@ let list = new Vue({
                 presents: [],
 
             })
+            this.displayBloc = !this.displayBloc
             this.inputName = ""
             this.inputBirthdate = ""
             this.inputPicture = ""
@@ -99,6 +101,7 @@ let list = new Vue({
 
         displayProfile: function (index) {
             this.addOption = "Add a present"
+            this.icon = "fas fa-gift"
             console.log(this.friends[index].name)
             
             this.profile = []
@@ -108,6 +111,7 @@ let list = new Vue({
         },
         closeProfile: function () {
             this.addOption = "Add a birthday"
+            this.icon = "far fa-calendar-plus"
             this.hidden = !this.hidden
             this.profile = []
             this.displayForm = true
@@ -139,7 +143,6 @@ let list = new Vue({
             let unixDay =  86400000;
             
             return Math.ceil((cd.getTime()-d.getTime())/(unixDay));
-
         }
 
     }

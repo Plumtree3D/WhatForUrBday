@@ -39,7 +39,7 @@
 
 <!-- FIELDS MODAL -->
 <div v-on:click="displayBloc = !displayBloc" class="btn">
-    <span> <i class="far fa-calendar-plus"> <i class="fas fa-gift"></i> </i> {{addOption}} </span>
+    <span> <i :class="icon"> </i> {{addOption}} </span>
 </div>
 
 <div class="lightbox" v-bind:class="{LBDisp : displayBloc}"></div>
@@ -61,8 +61,11 @@
                 </form>
 
                 <form v-on:submit.prevent v-bind:class="{hide : displayForm}">
-                    <input v-model="inputPresent" placeholder="Indiquez un cadeau"> <br>
-                    <input v-model="inputYear" placeholder="Pour l'année..."> <br>
+
+                    <label for="inputName"> For year </label>
+                    <input v-model="inputYear" placeholder="Choose a year"> <br>
+                    <label for="inputName"> Present </label>
+                    <input v-model="inputPresent" placeholder="Enter a present"> <br>   
                     <button v-on:click="addPresent()"> Add </button>
                 </form>
                 <span v-on:click="displayBloc = !displayBloc"> Close </span>
