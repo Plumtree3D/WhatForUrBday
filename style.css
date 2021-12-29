@@ -170,7 +170,7 @@ input:focus {
     justify-content: space-between;
     margin: 10px 0px 10px 0px;
     padding-bottom: 10px;
-    border-bottom: 2px solid rgb(204, 204, 204) ;
+    border-bottom: 1px solid rgb(204, 204, 204);
     
 }
 
@@ -218,8 +218,8 @@ input:focus {
 }
 
 .upperProfile img {
-    width: 180px;
-    height: 180px;
+    width: 158px;
+    height: 158px;
     border-radius: 50%;
     border: white 4px solid;
     background-color: hotpink;
@@ -251,6 +251,11 @@ input:focus {
     background-color: transparent;
     border: none;
     font-size: 16px;
+    width: auto;
+    margin: 0;
+    margin-top: 20px;
+    padding: 0px 15px 8px 15px;
+
 }
 
 .present {
@@ -273,7 +278,7 @@ input:focus {
 
 .profileInfo {
     text-align: center;
-    margin-top: 52px;
+    margin-top: 64px;
 }
 
 #loader {
@@ -297,6 +302,20 @@ input:focus {
     z-index: 500;
     animation: spin 0.8s linear infinite;
 }
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.empty img {
+    margin-top: 15px;
+    height: 150px;
+    width: auto;
+}
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

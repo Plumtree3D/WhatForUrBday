@@ -13,10 +13,6 @@ let list = new Vue({
         addOption: "Add a birthday",
         icon: "far fa-calendar-plus",
         friends: [
-            { id: 123, name: 'Marceline', birthdate: '2012-01-08', picture: 'https://i.gifer.com/O9XA.gif', presents: []},
-            { id: 3245, name: 'Jake', birthdate: '2007-01-27', picture: 'https://i.gifer.com/origin/ff/ff421019d3e1939bf30d99c6d1bf831e.gif', presents: []},
-            { id: 6548, name: 'Bonnibel', birthdate: '2012-02-12', picture: 'https://c.tenor.com/E9ub-isJm3kAAAAM/princess-bubblegum-pasta.gif', presents: []},
-            { id: 9874, name: 'Wiz', birthdate: '2018/11/17', picture: 'profile.svg', presents: []},
         ],
         profile: [
         ]
@@ -137,12 +133,20 @@ let list = new Vue({
             var month = dateObj.getUTCMonth();
             var day = dateObj.getUTCDate();
             let cd = new Date(y, month, day)
-            if (d.getMonth()>month && d.getDate()>day)  {
+            if (d.getMonth()+1>month && d.getDate()+1>day)  {
                 cd.setFullYear(cd.getFullYear()+1); 
             }
             let unixDay =  86400000;
+
+            countdown =  Math.ceil((cd.getTime()-d.getTime())/(unixDay))
+
+             if (countdown == 365){
+                countdown = "today!"
+            } else if (countdown == 1) {
+                countdown = "tomorrow"
+            } else { countdown = "in "+countdown+" days"}
             
-            return Math.ceil((cd.getTime()-d.getTime())/(unixDay));
+            return countdown;
         }
 
     }

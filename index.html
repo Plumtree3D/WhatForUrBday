@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> What for ur birthday</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <Link type="text/css" rel="StyleSheet" href="style.css"/>    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <h1> My Birthdays </h1>
+
+    <div id="loader"> 
+        <div class="loading"></div>
+
+    </div>
+    
+    <div id="list">
+        <input v-model="search" type="search" placeholder="Search a name...">
+        <div class="friendsList" v-for="(friend, index) in result" v-on:click="displayProfile(index)">
+            <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt="">
+                    <div class="flexCol">
+                        <h3>{{ friend.name }}</h3>
+                        <span>{{ friend.birthdate.replace(/-/g,"/") }}</span>
+                    </div>
+                    <span class="countdown"> {{ getAge(friend.birthdate)+1 }} years old 
+                       <br>{{ countdown(friend.birthdate) }} </span>
+              
+                
+        </div>
+
+        <div class="empty" v-if="!friends.length">
+            <span> No birthday in sight !</span>
+            <img src="empty.svg" alt="">  
+            <p> Start by adding some friends...</p> 
+        </div>
+<!-- FIELDS MODAL -->
+<div v-on:click="displayBloc = !displayBloc" class="btn">
+    <span> <i :class="icon"> </i> {{addOption}} </span>
+</div>
+
+<div class="lightbox" v-bind:class="{LBDisp : displayBloc}"></div>
+        <div id="addBirthday" v-bind:class="{test : displayBloc}" >
+
+            
+                <div v-on:click="displayBloc = !displayBloc" class="handle"></div>
+                <h2  > {{addOption}} </h2>
+
+            
+                <form v-on:submit.prevent v-bind:class="{hide : !displayForm}" >
+                    <label for="inputName"> Name </label>
+                    <input v-model="inputName" placeholder="Enter a name"> <br>
+                    <label for="inputBirthdate"> Birth date </label>
+                    <input v-model="inputBirthdate" type="date" placeholder="Enter a birthdate"> <br>
+                    <label for="inputPicture"> Picture </label>
+                    <input v-model="inputPicture" placeholder="Enter an image URL adress"> <br>
+                    <button v-on:click="addFriend"> Add </button>
+                </form>
+
+                <form v-on:submit.prevent v-bind:class="{hide : displayForm}">
+
+                    <label for="inputName"> For year </label>
+                    <input v-model="inputYear" placeholder="Choose a year"> <br>
+                    <label for="inputName"> Present </label>
+                    <input v-model="inputPresent" placeholder="Enter a present"> <br>   
+                    <button v-on:click="addPresent()"> Add </button>
+                </form>
+                <span v-on:click="displayBloc = !displayBloc"> Close </span>
+        </div>
+
+<!-- PROFILE  -->
+        <div id="profile" v-for="element in profile"> 
+            <div class="upperProfile">
+                
+                <div class="profileBar">
+                    <button v-on:click="closeProfile"> Close </button>
+                    
+                    <button v-on:click="removeFriend()"> Delete </button>
+                </div>
+                <h3> Profile </h3>
+
+                <img :src="element.picture ? element.picture : 'profile.svg'"  alt="">
+            </div>
+                <div class="profileInfo">
+                    <h2> {{ element.name}} <b>{{ getAge(element.birthdate) }}</b> </h2> 
+                    <span>{{ element.birthdate.replace(/-/g,"/") }} </span> <br>
+                </div>
+                
+                <ul >
+                    <li v-for="present in element.presents">  
+                        <span class="present">{{ present.gift }}</span>
+                        <div>
+                         <span>{{ present.year }}</span> </li>   
+                        </div>
+                        
+                </ul>
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>    
+
+
