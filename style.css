@@ -60,22 +60,20 @@ input {
     font-size: 16px;
     border: solid 1px rgb(204, 204, 204);
     background-color: rgb(245, 240, 240);
-    padding: 12px;
+    padding: 10px;
     margin-top: 10px;
-    margin-bottom: 10%;
 
 }
 
 button {
-    width: 120%;
+    width: 100%;
     border-radius: 24px;
     font-size: 16px;
     background-color: #42BDE3;
-    padding: 12px;
+    padding: 10px;
+    margin-top: 21px;
     color: white;
     border: none;
-    margin-top: 25px;
-    margin-left: -10%;
 }
 
 input:focus {
@@ -86,7 +84,6 @@ input:focus {
 #addBirthday {
     width: 100%;
     max-width: 440px;
-    height: 70%;
     color: black;
     font-family: 'Inter Regular';
     position: fixed;
@@ -100,6 +97,7 @@ input:focus {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 10%;
 }
 
 #addBirthday span {
@@ -108,9 +106,7 @@ input:focus {
 }
 
 #addBirthday input {
-    width: 110%;
-    margin-left: -10%;
-    margin-bottom: 15px;
+    width: 90%;
 }
 
 .handle {
@@ -141,7 +137,7 @@ input:focus {
     display: block;
 }
 
-.test {
+.show {
     bottom: 0 !important;
 }
 
@@ -152,7 +148,7 @@ input:focus {
 #profile {
     position: fixed;
     top: 0;
-    left: 50%;
+    left: 100vw;
     transform: translateX(-50%);
     z-index: 3;
     background-color: white;
@@ -185,7 +181,6 @@ input:focus {
     height: 65px;
     object-fit: cover;
     border-radius: 12px;
-    background-color: #42BDE3;
     
 }
 
@@ -315,6 +310,28 @@ input:focus {
     height: 150px;
     width: auto;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+
+}
+
+label {
+    align-self: flex-start;
+}
+
+input[type=file] {
+    border-radius: 0;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+
+
+}
+
 
 
 @keyframes spin {

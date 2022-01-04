@@ -24,10 +24,11 @@
     <div id="list">
         <input v-model="search" type="search" placeholder="Search a name...">
         <div class="friendsList" v-for="(friend, index) in result" v-on:click="displayProfile(index)" v-on:keydown.enter="displayProfile(index)"  tabindex="0">
-            <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt= "avatar">
+            <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt= "avatar" :style="friend.color" >
                     <div class="flexCol">
                         <h3>{{ friend.name }}</h3>
                         <span>{{ friend.birthdate.replace(/-/g,"/") }}</span>
+                        
                     </div>
                     <span class="countdown"> {{ getAge(friend.birthdate)+1 }} years old 
                        <br>{{ countdown(friend.birthdate) }} </span>
@@ -46,7 +47,7 @@
 </div>
 
 <div class="lightbox" v-bind:class="{LBDisp : displayBloc}"></div>
-        <div id="addBirthday" v-bind:class="{test : displayBloc}" >
+        <div id="addBirthday" v-bind:class="{show : displayBloc}" >
 
             
                 <div v-on:click="displayBloc = !displayBloc" class="handle"></div>
@@ -58,7 +59,7 @@
                     <input v-model="inputName" placeholder="Enter a name"> <br>
                     <label for="inputBirthdate"> Birth date </label>
                     <input v-model="inputBirthdate" type="date" placeholder="Enter a birthdate"> <br>
-                    <!-- <label for="inputPicture"> Picture </label> -->
+                    <label for="files"> Picture </label>
                     <!-- <input v-model="inputPicture" placeholder="Enter an image URL adress"> <br> -->
                     <input type="file" id="files" @change="processFile" > <br>
                     <button v-on:click="addFriend"> Add </button>
@@ -86,7 +87,7 @@
                 </div>
                 <h3> Profile </h3>
 
-                <img :src="element.picture ? element.picture : 'profile.svg'"  alt="">
+                <img :src="element.picture ? element.picture : 'profile.svg'"  alt="" :style="element.color">
             </div>
                 <div class="profileInfo">
                     <h2> {{ element.name}} <b>{{ getAge(element.birthdate) }}</b> </h2> 

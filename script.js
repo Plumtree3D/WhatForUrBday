@@ -10,6 +10,7 @@ let list = new Vue({
         inputPicture: "",
         inputPresent: "",
         inputYear: "",
+        bgcolor: "",
         search: null,
         addOption: "Add a birthday",
         icon: "far fa-calendar-plus",
@@ -43,23 +44,30 @@ let list = new Vue({
             } else {
                 return this.friends;
             }
-        }
+        },
+
+
 
     },
+
+
     methods: {
         addFriend: function () {
+            this.backgroundcolor();
             this.friends.push({
                 id: Date.now(), 
                 name: this.inputName, 
                 birthdate: this.inputBirthdate,
                 picture: this.newImage,
                 presents: [],
+                color: this.bgcolor,
 
             })
             this.displayBloc = !this.displayBloc
             this.inputName = ""
             this.inputBirthdate = ""
             this.inputPicture = ""
+            this.newImage = ""
             this.saveLocal();
         },
 
@@ -161,6 +169,15 @@ let list = new Vue({
             };
 
         },
+        backgroundcolor: function () {
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+
+            let color = "background-color: rgba(" + r + "," + g + "," + b + ");"
+            list.bgcolor = color
+            
+        }
 
     }
 })
