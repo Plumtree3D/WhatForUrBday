@@ -5,6 +5,7 @@ let list = new Vue({
         displayForm: true,
         hidden: false,
         inputName: "",
+        newImage: "",
         inputBirthdate: "",
         inputPicture: "",
         inputPresent: "",
@@ -51,7 +52,7 @@ let list = new Vue({
                 id: Date.now(), 
                 name: this.inputName, 
                 birthdate: this.inputBirthdate,
-                picture: this.inputPicture,
+                picture: this.newImage,
                 presents: [],
 
             })
@@ -119,11 +120,10 @@ let list = new Vue({
             
         },
         getAge: function (birthdate) {
-            let d = new Date();
-            var y = d.getFullYear();
-            var date = new Date(birthdate).getFullYear();
-            let yearsOld = y - date;
-            return yearsOld;
+            let d = Math.round(new Date().getTime() / 1000);
+            var date = Math.round(new Date(birthdate).getTime() / 1000);
+            let yearsOld = d - date;
+            return Math.floor(yearsOld/31536000);
         },
 
         countdown: function (birthdate) {
@@ -147,7 +147,20 @@ let list = new Vue({
             } else { countdown = "in "+countdown+" days"}
             
             return countdown;
-        }
+        },
+
+        processFile: function (event) {
+            file = event.target.files[0]
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+            list.newImage = reader.result;
+            };
+            reader.onerror = function (error) {
+              console.log('Error: ', error);
+            };
+
+        },
 
     }
 })
