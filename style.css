@@ -148,7 +148,7 @@ input:focus {
 #profile {
     position: fixed;
     top: 0;
-    left: 100vw;
+    left: 50vw;
     transform: translateX(-50%);
     z-index: 3;
     background-color: white;
@@ -214,7 +214,8 @@ input:focus {
 
 .upperProfile img {
     width: 158px;
-    height: 158px;
+    height: auto;
+    min-height: 158px;
     border-radius: 50%;
     border: white 4px solid;
     background-color: hotpink;
