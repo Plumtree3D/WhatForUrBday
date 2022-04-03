@@ -14,7 +14,7 @@ let list = new Vue({
         search: null,
         addOption: "Add a birthday",
         icon: "far fa-calendar-plus",
-        friends: [
+        friends: [{"id":1648816350529,"name":"Marceline","birthdate":"1988-04-03","picture":"https://i1.sndcdn.com/avatars-000199543640-n1j2m1-t500x500.jpg","presents":[{"gift":"Candy Apple Red Fender 1951 Precision Bass","year":"2002"},{"gift":"10\" Hardwood Stakes","year":"2007"},{"gift":"One dark blue button","year":"2018"},{"gift":"Vampire Stuff","year":"2020"},{"gift":"Cool Motorbike","year":"2023"}],"color":"background-color: rgba(92,71,55);"},{"id":1648816417668,"name":"Jake","birthdate":"2002-04-14","picture":"https://c.tenor.com/r2iOb-XCJXcAAAAC/jake-adventure-time.gif","presents":[],"color":"background-color: rgba(61,200,170);"},{"id":1648816428806,"name":"Bonnibel","birthdate":"1998-12-09","picture":"https://thumbs.gfycat.com/CrazyMeekCollardlizard-size_restricted.gif","presents":[],"color":"background-color: rgba(28,83,52);"}
         ],
         profile: [
         ]

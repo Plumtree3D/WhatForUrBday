@@ -12,22 +12,25 @@
 </head>
 
 <body>
-
-
-    <h1> My Birthdays </h1>
-
     <div id="loader"> 
         <div class="loading"></div>
 
     </div>
+
+
+    <h1> My Birthdays </h1>
+
+
     
     <div id="list">
         <input v-model="search" type="search" placeholder="Search a name...">
         <div class="friendsList" v-for="(friend, index) in result" v-on:click="displayProfile(index)" v-on:keydown.enter="displayProfile(index)"  tabindex="0">
-            <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt= "avatar" :style="friend.color" >
+            <div class="friendsInfo"> 
+                <img :src="friend.picture ? friend.picture : 'profile.svg'"  alt= "avatar" :style="friend.color" >
                     <div class="flexCol">
                         <h3>{{ friend.name }}</h3>
                         <span>{{ friend.birthdate.replace(/-/g,"/") }}</span>
+            </div>
                         
                     </div>
                     <span class="countdown"> {{ getAge(friend.birthdate)+1 }} years old 
@@ -59,9 +62,12 @@
                     <input v-model="inputName" placeholder="Enter a name"> <br>
                     <label for="inputBirthdate"> Birth date </label>
                     <input v-model="inputBirthdate" type="date" placeholder="Enter a birthdate"> <br>
-                    <label for="files"> Picture </label>
+                    <label> Picture </label>
+                    <label for="files" class="uploadLabel">
+                        <i class="fa fa-image"></i>
                     <!-- <input v-model="inputPicture" placeholder="Enter an image URL adress"> <br> -->
                     <input type="file" id="files" @change="processFile" > <br>
+                    </label>
                     <button v-on:click="addFriend"> Add </button>
                 </form>
 
@@ -85,7 +91,7 @@
                     
                     <button v-on:click="removeFriend()"> Delete </button>
                 </div>
-                <h3> Profile </h3>
+                <h3> {{ element.name}} </h3>
 
                 <img :src="element.picture ? element.picture : 'profile.svg'"  alt="" :style="element.color">
             </div>

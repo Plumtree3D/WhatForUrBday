@@ -19,9 +19,6 @@
     src: url('font/Inter-Light.woff') format('woff'), url('font/Inter-Light.woff') format('ttf');
     }
 
-html {
-    background-color: rgb(251, 251, 251);
-}
 
 .btn {
     background-color: #42BDE3;
@@ -158,6 +155,12 @@ input:focus {
     transition: 0.2s ease-in;
 }
 
+.friendsInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
 
 
 .friendsList {
@@ -167,7 +170,6 @@ input:focus {
     margin: 10px 0px 10px 0px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(204, 204, 204);
-    
 }
 
 .friendsList h3 {
@@ -188,6 +190,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0px 15px;
 
 }
 
@@ -280,6 +283,8 @@ input:focus {
 #loader {
     position: absolute;
     z-index: 10;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -324,13 +329,27 @@ label {
     align-self: flex-start;
 }
 
+.uploadLabel {
+    position: relative;
+    height: 55px;
+    width: 55px;
+    border-radius: 14px;
+    border: solid 1px rgb(204, 204, 204);
+    background-color: rgb(245, 240, 240);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.uploadLabel i {
+    color: rgb(162, 162, 162);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 input[type=file] {
-    border-radius: 0;
-    font-size: 16px;
-    border: none;
-    background-color: transparent;
-
-
+    display: none;
 }
 
 
@@ -338,4 +357,26 @@ input[type=file] {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        max-width: 60%;
+    }
+    #addBirthday {
+        max-width: 60%;
+        padding-bottom: 15px;
+        margin-bottom: 10%;
+        border-radius: 25px;
+    }
+    form {
+        width: 75%;
+    }
+    #profile {
+        max-width: 100%;
+    }
+    .profileBar, #profile li {
+        width: 60%;
+        margin: auto;
+    }
 }
